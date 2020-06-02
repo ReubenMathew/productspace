@@ -3,10 +3,10 @@
     <div>
       <logo />
       <h1 class="title">
-        nuxtjs
+        productspace
       </h1>
       <h2 class="subtitle">
-        My astonishing Nuxt.js project
+        Project showcases for rising developers
       </h2>
       <div class="links">
         <a
@@ -39,6 +39,11 @@ export default {
 </script>
 
 <style>
+/* Sample `apply` at-rules with Tailwind CSS
+.container {
+  @apply min-h-screen flex justify-center items-center text-center mx-auto;
+}
+*/
 .container {
   margin: 0 auto;
   min-height: 100vh;
