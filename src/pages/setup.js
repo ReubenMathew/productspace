@@ -36,13 +36,13 @@ function Setup(){
                     {/* <hr class="py-3"/> */}
                     <div class="pb-3">
                         <Short label="Tagline" text="Write a short tagline"/>
-                        <MediumText label="Description" text="Write a description"/>
+                        <MediumText label="Description" text="Write a description..."/>
                     </div>
                     <hr class="py-2"/>
                     <div class="px-2 pb-4 font-extrabold text-lg">Optional Links</div>
                     <div class="flex pb-6 flex-wrap w-full whitespace-no-wrap">
                         <span class="sm:w-1/2 pr-0 sm:pr-8"><Short label="Documentation Link" text="e.g. github.com/ReubenMathew/VennFX/wiki"/></span>
-                        <span class="sm:w-1/2"><Short label="Downloads Link" text="e.g. github.com/ReubenMathew/VennFX/releases"/></span>
+                        <span class="sm:w-1/2"><Short label="Download Link" text="e.g. github.com/ReubenMathew/VennFX/releases"/></span>
                     </div>
                 </div>
                 <div class="bg-accent1 border-t border-accent2 px-8">
