@@ -30,8 +30,8 @@ function Setup(){
                 <div class="px-8">
                     <div class="p-2 font-extrabold text-xl">Project Details</div>
                     <div class="flex pb-3 flex-wrap w-full">
-                        <span class="sm:w-1/2 pr-0 sm:pr-8"><Short label="Project Name" text="e.g. VennFX"/></span>
-                        <span class="sm:w-1/2"><Short label="GitHub URL" text="e.g. github.com/ReubenMathew/VennFX"/></span>
+                        <span class="sm:w-1/2 pr-0 sm:pr-8"><Short label="Product Name" text="e.g. VennFX"/></span>
+                        <span class="sm:w-1/2"><Short label="Repository URL" text="e.g. github.com/ReubenMathew/VennFX"/></span>
                     </div>    
                     {/* <hr class="py-3"/> */}
                     <div class="pb-3">
