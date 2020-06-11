@@ -35,7 +35,7 @@ function Setup(){
                     </div>    
                     {/* <hr class="py-3"/> */}
                     <div class="pb-3">
-                        <Short label="Tagline" text="Write a short tagline"/>
+                        <Short label="Tagline" text="Write a short tagline in 5 words or less."/>
                         <MediumText label="Description" text="Write a description..."/>
                     </div>
                     <hr class="py-2"/>
