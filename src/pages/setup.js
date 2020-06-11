@@ -48,7 +48,7 @@ function Setup(){
                 <div class="bg-accent1 border-t border-accent2 px-8">
                     <div class="py-4 px-2 flex flex-wrap justify-center sm:justify-between items-center">
                             <span class="text-accent5 text-sm pb-4 text-center sm:text-left">Fill out this form before submitting.</span>
-                            <button class="text-accent4 border border-accent2 py-2 px-8 rounded-lg hover:border-accent4 hover:text-accent5 focus:outline-none">Submit</button>
+                            <button class="text-accent4 border border-accent2 py-2 px-8 rounded-lg hover:border-accent4 hover:text-accent5 focus:outline-none transition duration-200 ease-in-out">Submit</button>
                     </div>
                 </div>
             </div>
