@@ -10,6 +10,10 @@ function Home(){
       <div>
         <Link href="/setup">Setup</Link>
       </div>
+      <div>
+        <Link href="/profile">Profile</Link>
+      </div>
+
     </div>
     );
 }
