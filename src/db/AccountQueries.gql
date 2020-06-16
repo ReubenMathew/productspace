@@ -1,0 +1,28 @@
+query AccountByEmail {
+  accountsByEmail(email: "intelphysic@gmail.com") {
+    data {
+      _id
+      email
+      userid
+    }
+  }
+}
+
+query AccountsProjects {
+  Accounts {
+    data {
+      _id
+      userid
+      email
+      profile {
+        _id
+        projects {
+          data {
+            _id
+            ProjectName
+          }
+        }
+      }
+    }
+  }
+}

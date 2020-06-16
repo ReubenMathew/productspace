@@ -1,0 +1,62 @@
+mutation DeleteProject {
+  deleteProject(id: "268526087962624512") {
+    _id
+  }
+}
+
+mutation AddProject {
+  updateProfile(
+    id: "268527194172555795"
+    data: { projects: { create: { ProjectName: "Test1", Description: "" } } }
+  ) {
+    _id
+    projects {
+      data {
+        _id
+        ProjectName
+      }
+    }
+  }
+}
+
+
+mutation UpdateProject{
+  updateProject(id: "268527212933677587", data:{
+    ProjectName: "Updated Test"
+  })
+  {
+    _id
+    ProjectName
+  }
+}
+
+
+# Optional
+mutation ProfileSet {
+  updateProfile(
+    id: "268526821762400786"
+    data: {
+      projects: {
+        create: [
+          {
+            Tagline: "Brainstorm. Organize. Create."
+            Description: "VennFX is a cross-platform Venn Diagram desktop application built for performance and customization."
+            Download: "https://github.com/EECS2311-Team8/SoftwareDevelopmentProject/releases/tag/vF"
+            Source: "https://github.com/ReubenMathew/VennFX"
+            ProjectName: "VennFX"
+            Docs: "https://github.com/ReubenMathew/VennFX/tree/master/Documentation"
+          }
+          {
+            Tagline: "Show"
+            Description: "Show"
+            Source: "https://github.com/ReubenMathew/productspace"
+            ProjectName: "productspace"
+          }
+        ]
+      }
+      account: { connect: "268526821756109330" }
+    }
+  ) {
+    _id
+  }
+}

@@ -1,0 +1,16 @@
+mutation Account {
+  createAccount(
+    data: {
+      email: "reubenmn@gmail.com"
+      userid: "ReubenMathew"
+      profile: { create: {} }
+    }
+  ) {
+    _id
+    userid
+    email
+    profile {
+      _id
+    }
+  }
+}
