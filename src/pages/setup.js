@@ -9,7 +9,7 @@ function Short() {
 
 function Setup(){
     return (
-        <div class="bg-accent1 min-h-screen flex  items-center justify-center">
+        <div class="bg-accent1 min-h-screen flex items-center justify-center">
             <Short/>
             {/* <div class="w-full px-3">
                 Hello

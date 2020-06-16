@@ -1,0 +1,24 @@
+query AccountByEmail {
+	findAccountByID(id: "268524390112559634"){
+    email
+    userid
+  }
+}
+
+query GetAccounts {
+  Accounts{
+		data{
+			userid
+      email
+      profile{
+        _id
+        projects {
+          data {
+            _id
+            ProjectName
+          }
+        }
+      }
+    }
+  }
+}

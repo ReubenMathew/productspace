@@ -1,0 +1,28 @@
+type Account {
+    email: String! @unique
+    userid: String! @unique
+    profile: Profile! @relation
+}
+
+type Profile {
+    account:  Account!  @relation
+    projects: [ Project! ] @relation
+}
+
+type Project {
+    profile: [ Profile! ] @relation
+    ProjectName: String!
+    Tagline: String
+    Description: String
+    Download: String
+    Source: String
+    Docs: String
+}
+
+type Query {
+    Accounts: [Account!]
+    accountsByEmail(email: String!): [Account!]
+    Projects: [Project!]
+    Profiles: [Profile!]
+}
+
