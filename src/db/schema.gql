@@ -21,7 +21,8 @@ type Project {
 
 type Query {
     Accounts: [Account!]
-    accountsByEmail(email: String!): [Account!]
+    accountByEmail(email: String!): [Account!]
+    accountByUserID(userid: String!): [Account!]
     Projects: [Project!]
     Profiles: [Profile!]
 }
