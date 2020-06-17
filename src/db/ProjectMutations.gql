@@ -4,7 +4,7 @@ mutation DeleteProject {
   }
 }
 
-mutation AddProject {
+mutation UpdateProfile {
   updateProfile(
     id: "268527194172555795"
     data: { projects: { create: { ProjectName: "Test1", Description: "" } } }
@@ -18,6 +18,18 @@ mutation AddProject {
     }
   }
 }
+
+mutation AddProject {
+	createProject(data: {
+    ProjectName:"Test Project 2"
+    Description:"Sample Description 2"
+    profile:{ connect: "268527194172555795"}
+  }){
+    _id
+    ProjectName
+  }
+}
+
 
 
 mutation UpdateProject{

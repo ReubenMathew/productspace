@@ -9,34 +9,24 @@ const client = new ApolloClient({
     }
 })
 
-
-// or you can use `import gql from 'graphql-tag';` instead
-
-
-
-
 export default (req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     
     client
-    .query({
-        query: gql`
-            query AccountByEmail {
-                accountByEmail(email: "intelphysic@gmail.com") {
+    .mutate({
+        mutation: gql`
+            mutation AddProject {
+                updateProfile(
+                    id: "268527194140049939"
+                    data: { projects: { create: { ProjectName: "Test1", Description: "" } } }
+                ) {
+                    _id
+                    projects {
                     data {
                         _id
-                        email
-                        userid
-                        profile {
-                            _id
-                            projects {
-                                data {
-                                    _id
-                                    ProjectName
-                                }
-                            }
-                        }
+                        ProjectName
+                    }
                     }
                 }
             }
@@ -45,7 +35,7 @@ export default (req, res) => {
     })
     .then(result => {
       console.log(result)
-      res.end(JSON.stringify(result.data.accountsByEmail.data[0]))
+      res.end(JSON.stringify(result))
     })
     .catch(error => console.log(error));
 
