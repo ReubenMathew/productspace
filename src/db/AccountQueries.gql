@@ -27,3 +27,20 @@ query AccountsProjects {
     }
   }
 }
+
+query ProjectsByUserID {
+  accountByUserID(userid: "rubrub"){
+    data{
+      _id
+      email
+      userid
+      projects{
+        data{
+          _id
+          ProjectName
+          Description
+        }
+      }
+    }
+  }
+}

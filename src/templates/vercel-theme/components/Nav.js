@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 import Button from './Button'
+
 function Nav(props){
     
     const [projectName, setProjectName] = useState(props.projectName);
@@ -17,7 +18,7 @@ function Nav(props){
 {/* Insert SVG Icon here... */}
                 </div>
                 {/* <svg className="mr-4" width="60" height="40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="23.5" cy="19.5" r="15.5" fill="#fff" stroke="#666" stroke-width="4"/><circle cx="40.5" cy="19.5" r="15.5" stroke="#444" stroke-width="4"/></svg> */}
-                <a href="https://github.com/ReubenMathew/VennFX">
+                <a href={props.source}>
                     <div className="hidden mr-4 sm:block text-accent4">{projectName}</div>
                 </a>
                 <div className="hidden ml-10 sm:block sm:ml-1">

@@ -1,4 +1,8 @@
-import ApolloClient, { gql, InMemoryCache, HttpLink } from 'apollo-boost';
+import ApolloClient, { gql, InMemoryCache } from 'apollo-boost';
+
+// API Arguments:
+// user: String
+// project: String
 
 const client = new ApolloClient({
     cache: new InMemoryCache(),
@@ -19,31 +23,41 @@ export default (req, res) => {
     client
     .query({
         query: gql`
-            query AccountByUserID {
-                accountByUserID(userid: ${user}) {
-                    data {
+            # Write your query or mutation here
+            query ProjectsByUserID {
+                accountByUserID(userid: ${user}){
+                    data{
                     _id
                     email
                     userid
-                    profile {
+                    projects{
+                        data{
                         _id
-                        projects {
-                        data {
-                            _id
-                            ProjectName
-                            Description
-                        }
+                        ProjectName
+                        Description
                         }
                     }
                     }
                 }
             }
 
+
         `
     })
     .then(result => {
     //   console.log(result)
-      res.end(JSON.stringify(result.data.accountByUserID.data[0].profile.projects))
+
+    var projects = result.data.accountByUserID.data[0].projects.data
+
+    var out = projects.filter(function(project) {
+        // console.log(project.ProjectName)
+        // console.log(`${req.query.project}`)
+        return project.ProjectName == `${req.query.project}` ;
+    });
+
+    console.log(out)
+
+      res.end(JSON.stringify(out))
       
     })
     .catch(error => console.log(error));

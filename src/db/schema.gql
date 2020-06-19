@@ -1,16 +1,11 @@
 type Account {
     email: String! @unique
     userid: String! @unique
-    profile: Profile! @relation
-}
-
-type Profile {
-    account:  Account!  @relation
-    projects: [ Project! ] @relation
+    projects: [ Project ] @relation(name: "user")
 }
 
 type Project {
-    profile: [ Profile! ] @relation
+    Account: Account! @relation(name: "user")
     ProjectName: String!
     Tagline: String
     Description: String
@@ -24,6 +19,5 @@ type Query {
     accountByEmail(email: String!): [Account!]
     accountByUserID(userid: String!): [Account!]
     Projects: [Project!]
-    Profiles: [Profile!]
 }
 
