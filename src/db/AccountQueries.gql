@@ -20,6 +20,7 @@ query AccountsProjects {
           data {
             _id
             ProjectName
+            Description
           }
         }
       }

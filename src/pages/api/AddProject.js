@@ -12,23 +12,28 @@ const client = new ApolloClient({
 export default (req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
+
+    const query = req.query 
+
+    const reqData = {
+        ProjectName: query.ProjectName,
+        Description: query.Description,
+        Profile: "268527194172555795"
+    }
+    console.log(reqData)
     
     client
     .mutate({
         mutation: gql`
             mutation AddProject {
-                updateProfile(
-                    id: "268527194140049939"
-                    data: { projects: { create: { ProjectName: "Test1", Description: "" } } }
-                ) {
-                    _id
-                    projects {
-                    data {
-                        _id
-                        ProjectName
-                    }
-                    }
-                }
+                createProject(data: {
+                ProjectName: ${reqData.ProjectName}
+                Description: ${reqData.Description}
+                profile:{ connect: ${reqData.Profile}}
+            }){
+                _id
+                ProjectName
+            }
             }
 
         `

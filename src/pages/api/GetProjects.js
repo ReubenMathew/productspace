@@ -12,12 +12,14 @@ const client = new ApolloClient({
 export default (req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
+
+    const user = req.query.user
     
     client
     .query({
         query: gql`
             query AccountByUserID {
-                accountByUserID(userid: "ReubenMathew") {
+                accountByUserID(userid: ${user}) {
                     data {
                     _id
                     email
@@ -28,6 +30,7 @@ export default (req, res) => {
                         data {
                             _id
                             ProjectName
+                            Description
                         }
                         }
                     }
@@ -38,8 +41,9 @@ export default (req, res) => {
         `
     })
     .then(result => {
-      console.log(result)
-      res.end(JSON.stringify(result))
+    //   console.log(result)
+      res.end(JSON.stringify(result.data.accountByUserID.data[0].profile.projects))
+      
     })
     .catch(error => console.log(error));
 
