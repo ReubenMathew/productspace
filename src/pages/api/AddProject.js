@@ -13,6 +13,16 @@ export default (req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
 
+    const client = new ApolloClient({
+        cache: new InMemoryCache(),
+        uri: 'https://graphql.fauna.com/graphql',
+        fetch,
+        headers: {
+            // Authorization: `Bearer ${process.env.FAUNADB_SECRET}`
+            Authorization: `Bearer ${req.query.token}`
+        }
+    })
+
     const query = req.query 
 
     const reqData = {

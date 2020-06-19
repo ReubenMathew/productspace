@@ -6,6 +6,7 @@ const client = new ApolloClient({
     fetch,
     headers: {
         Authorization: `Bearer ${process.env.FAUNADB_SECRET}`
+        // Authorization: `Bearer ${req.query.token}`
     }
 })
 
