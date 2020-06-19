@@ -4,10 +4,9 @@ import Button from './Button'
 
 function Nav(props){
     
-    const [projectName, setProjectName] = useState(props.projectName);
     const [docs, setDocs] = useState(props.docs);
     const [author, setAuthor] = useState(props.author);
-    
+    console.log(props)
 
     return (
         <div className="flex flex-row items-center justify-between w-full px-6 py-4 text-left bg-white border-b-1 md:px-32 border-accent2">
@@ -19,7 +18,7 @@ function Nav(props){
                 </div>
                 {/* <svg className="mr-4" width="60" height="40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="23.5" cy="19.5" r="15.5" fill="#fff" stroke="#666" stroke-width="4"/><circle cx="40.5" cy="19.5" r="15.5" stroke="#444" stroke-width="4"/></svg> */}
                 <a href={props.source}>
-                    <div className="hidden mr-4 sm:block text-accent4">{projectName}</div>
+                    <div className="hidden mr-4 sm:block text-accent4">{props.projectName}</div>
                 </a>
                 <div className="hidden ml-10 sm:block sm:ml-1">
                     <a href={`${docs}`}>

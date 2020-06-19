@@ -4,9 +4,9 @@ function Home(){
   
   return (
     <div>
-      <div>
+      {/* <div>
         <Link href="/display">Template</Link>
-      </div>
+      </div> */}
       <div>
         <Link href="/setup">Setup</Link>
       </div>

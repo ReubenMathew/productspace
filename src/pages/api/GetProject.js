@@ -55,7 +55,7 @@ export default (req, res) => {
         return project.ProjectName == `${req.query.project}` ;
     });
 
-    console.log(out)
+    // console.log(out)
 
       res.end(JSON.stringify(out))
       
