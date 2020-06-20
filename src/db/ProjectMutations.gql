@@ -20,14 +20,14 @@ mutation UpdateProfile {
 }
 
 mutation AddProject {
-	createProject(data: {
-    ProjectName:"Test Project 2"
-    Description:"Sample Description 2"
-    profile:{ connect: "268527194172555795"}
-  }){
+    createProject(data: {
+    ProjectName: ${ProjectName}
+    Description: ${Description}
+    profile:{ connect: ${Profile}}
+}){
     _id
     ProjectName
-  }
+}
 }
 
 
