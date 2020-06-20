@@ -37,7 +37,9 @@ function ProjectPage(){
     <div>
       <Head>
         <title>{data.projectName} - {data.author}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
+        <meta property="og:site_name" content="productspace" />
+        <meta property="og:title" content={`${data.projectName}`} />
       </Head>
       <Template theme="vercel" data={data}/>
     </div>
