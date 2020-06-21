@@ -10,12 +10,7 @@ function VercelTheme(props){
       <div className="w-full">
         {/* fixed class for sticky nav */}
         <div className="bg-accent1">
-          <Nav 
-            projectName={`${props.projectName}`}
-            docs={`${props.docs}`}
-            author={`${props.author}`}
-            source={`${props.source}`}
-          />
+
           <Splash
             tagline={`${props.tagline}`}
             description={`${props.description}`}
