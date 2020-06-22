@@ -2,41 +2,44 @@ import Template from '../../modules/Template'
 import Head from 'next/head'
 import {useRouter} from 'next/router'
 
-async function getProjectDataAsync() 
-{
-  let response = await fetch(`/api/GetProject?user="ReubenMathew"&project=VennFX`);
-  let data = await response.json()
-  return data;
+export async function getStaticPaths() {
+  const res = await fetch(`http://localhost:3000/api/GetProjects?user="ReubenMathew"`)
+  const projects = await res.json()
+
+  // Get the paths we want to pre-render based on posts
+  const paths = projects.map(project => `/ReubenMathew/${project.ProjectName}`)
+
+  return { paths, fallback: false }
 }
 
-function ProjectPage(){
-  const router = useRouter()
-  const head = String(router.query.project).trim()
-  // ProjectData()
-  // console.log(ProjectData())
-  const data = {
-    tagline: 'Brainstorm. Organize. Create.',
-    description: 'VennFX is a cross-platform Venn Diagram desktop application built for performance and customization.',
-    download: 'https://github.com/EECS2311-Team8/SoftwareDevelopmentProject/releases/tag/vF',
-    source: 'https://github.com/ReubenMathew/VennFX',
-    docs: "https://github.com/ReubenMathew/VennFX/tree/master/Documentation",
-    author: 'Reuben Ninan'
+export async function getStaticProps({ params }) {
+  console.log("PARAMS - ",params)
+  const getURI = `http://localhost:3000/api/GetProject?user="${params.user}"&project=${params.project}`
+  console.log(getURI)
+  const res = await fetch(getURI)
+  const ProjectData = await res.json()
+  // console.log("------------")
+  // console.log(ProjectData)
+
+  return {
+    props: {
+      ProjectData
+    }
   }
 
-  getProjectDataAsync()
-  .then(raw => {
-    const res = raw[0]
-    console.log(res.ProjectName)
-    data.projectName = res.ProjectName
-  }); 
+}
 
-  console.log(data)
+function ProjectPage(props){
+  const router = useRouter()
+  const data = props.ProjectData[0]
+  
+  // console.log("------------")
+  // console.log(data)
 
-  // console.log(router.query)
   return (
     <div>
       <Head>
-        <title>{data.projectName} - {data.author}</title>
+        <title>{data.ProjectName} -</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
         <meta property="og:site_name" content="productspace" />
         <meta property="og:title" content={`${data.projectName}`} />
@@ -50,3 +53,12 @@ function ProjectPage(){
 
 
 export default ProjectPage;
+
+// const data = {
+//   tagline: 'Brainstorm. Organize. Create.',
+//   description: 'VennFX is a cross-platform Venn Diagram desktop application built for performance and customization.',
+//   download: 'https://github.com/EECS2311-Team8/SoftwareDevelopmentProject/releases/tag/vF',
+//   source: 'https://github.com/ReubenMathew/VennFX',
+//   docs: "https://github.com/ReubenMathew/VennFX/tree/master/Documentation",
+//   author: 'Reuben Ninan'
+// }

@@ -4,7 +4,8 @@ import Splash from './components/Splash'
 import Markdown from './components/Markdown'
 
 function VercelTheme(props){
-    
+  
+  // console.log(props,"Vercel Theme")
   return (
     <div>
       <div className="w-full">
@@ -12,10 +13,10 @@ function VercelTheme(props){
         <div className="bg-accent1">
 
           <Splash
-            tagline={`${props.tagline}`}
-            description={`${props.description}`}
-            download={`${props.download}`}
-            source={`${props.source}`}
+            tagline={`${props.Tagline}`}
+            description={`${props.Description}`}
+            download={`${props.Download}`}
+            source={`${props.Source}`}
           />
         </div>
         <Markdown/>
