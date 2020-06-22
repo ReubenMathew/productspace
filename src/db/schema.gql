@@ -18,6 +18,7 @@ type Query {
     Accounts: [Account!]
     accountByEmail(email: String!): [Account!]
     accountByUserID(userid: String!): [Account!]
+    projectByUserIDandName(userid: String!, ProjectName: String!): [Project!]
     Projects: [Project!]
 }
 

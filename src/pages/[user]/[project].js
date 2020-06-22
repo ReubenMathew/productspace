@@ -1,8 +1,10 @@
 import Template from '../../modules/Template'
 import Head from 'next/head'
-import {useRouter} from 'next/router'
 
 export async function getStaticPaths() {
+
+  // console.log("PARAMS - ",params)
+
   const res = await fetch(`http://localhost:3000/api/GetProjects?user="ReubenMathew"`)
   const projects = await res.json()
 
@@ -18,19 +20,21 @@ export async function getStaticProps({ params }) {
   console.log(getURI)
   const res = await fetch(getURI)
   const ProjectData = await res.json()
+  const username = params.user
   // console.log("------------")
   // console.log(ProjectData)
 
   return {
     props: {
-      ProjectData
+      ProjectData,
+      username
     }
   }
 
 }
 
 function ProjectPage(props){
-  const router = useRouter()
+
   const data = props.ProjectData[0]
   
   // console.log("------------")
@@ -39,7 +43,7 @@ function ProjectPage(props){
   return (
     <div>
       <Head>
-        <title>{data.ProjectName} -</title>
+        <title>{data.ProjectName} - {props.username}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
         <meta property="og:site_name" content="productspace" />
         <meta property="og:title" content={`${data.projectName}`} />

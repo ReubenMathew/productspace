@@ -24,7 +24,7 @@ export default (req, res) => {
     .query({
         query: gql`
             # Write your query or mutation here
-            query ProjectsByUserID {
+            query ProjectByUserID {
                 accountByUserID(userid: ${user}){
                     data{
                     _id
@@ -35,6 +35,10 @@ export default (req, res) => {
                         _id
                         ProjectName
                         Description
+                        Tagline
+                        Download
+                        Source
+                        Docs
                         }
                     }
                     }
