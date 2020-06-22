@@ -2,22 +2,24 @@ import Template from '../../modules/Template'
 import Head from 'next/head'
 
 export async function getStaticPaths() {
+  
+  const res = await fetch(`http://localhost:3000/api/AllUsers`)
+  const users = await res.json()
+  // console.log(users)
+  const paths = users.map( user => user.projects.data.map(project => `/${user.userid}/${project.ProjectName}`)).flat()
+  
+  console.log(paths)
 
-  // console.log("PARAMS - ",params)
-
-  const res = await fetch(`http://localhost:3000/api/GetProjects?user="ReubenMathew"`)
-  const projects = await res.json()
-
-  // Get the paths we want to pre-render based on posts
-  const paths = projects.map(project => `/ReubenMathew/${project.ProjectName}`)
-
-  return { paths, fallback: false }
+  return {
+    paths,
+    fallback: false 
+  }
 }
 
 export async function getStaticProps({ params }) {
-  console.log("PARAMS - ",params)
+  // console.log("PARAMS - ",params)
   const getURI = `http://localhost:3000/api/GetProject?user="${params.user}"&project=${params.project}`
-  console.log(getURI)
+  // console.log(getURI)
   const res = await fetch(getURI)
   const ProjectData = await res.json()
   const username = params.user
@@ -54,15 +56,4 @@ function ProjectPage(props){
 
 }
 
-
-
 export default ProjectPage;
-
-// const data = {
-//   tagline: 'Brainstorm. Organize. Create.',
-//   description: 'VennFX is a cross-platform Venn Diagram desktop application built for performance and customization.',
-//   download: 'https://github.com/EECS2311-Team8/SoftwareDevelopmentProject/releases/tag/vF',
-//   source: 'https://github.com/ReubenMathew/VennFX',
-//   docs: "https://github.com/ReubenMathew/VennFX/tree/master/Documentation",
-//   author: 'Reuben Ninan'
-// }
