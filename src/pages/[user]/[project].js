@@ -1,9 +1,12 @@
 import Template from '../../modules/Template'
 import Head from 'next/head'
 
+
+const server = process.env.server
+
 export async function getStaticPaths() {
   
-  const res = await fetch(`http://localhost:3000/api/AllUsers`)
+  const res = await fetch(`${server}/api/AllUsers`)
   const users = await res.json()
   // console.log(users)
   const paths = users.map( user => user.projects.data.map(project => `/${user.userid}/${project.ProjectName}`)).flat()
@@ -16,9 +19,11 @@ export async function getStaticPaths() {
   }
 }
 
+
+
 export async function getStaticProps({ params }) {
   // console.log("PARAMS - ",params)
-  const getURI = `http://localhost:3000/api/GetProject?user="${params.user}"&project=${params.project}`
+  const getURI = `${server}/api/GetProject?user="${params.user}"&project=${params.project}`
   // console.log(getURI)
   const res = await fetch(getURI)
   const ProjectData = await res.json()
