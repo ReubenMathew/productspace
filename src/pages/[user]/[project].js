@@ -50,7 +50,7 @@ function ProjectPage(props){
         <title>{data.ProjectName} - {props.username}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
         <meta property="og:site_name" content="productspace" />
-        <meta property="og:title" content={`${data.projectName}`} />
+        <meta property="og:title" content={`${data.ProjectName}`} />
       </Head>
       <Template theme="vercel" data={data}/>
     </div>
