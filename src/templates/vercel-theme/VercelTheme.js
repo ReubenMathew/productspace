@@ -14,7 +14,7 @@ function VercelTheme(props){
 
           <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
             <nav class="relative flex items-center justify-around sm:h-10 lg:justify-start">
-              <div class="block flex justify-between items-center w-full">
+              <div class="flex justify-between items-center w-full">
                 <span class="font-medium text-2xl text-accent4">
                   {props.ProjectName}
                 </span>
@@ -51,11 +51,13 @@ function VercelTheme(props){
                     Source Code
                   </a>
                 </div>
+                { props.Download && 
                 <div class="mt-3 sm:mt-0 sm:ml-3">
                   <a href={props.Download} class="w-full flex items-center justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-accent6 bg-white shadow-lg transform hover:-translate-y-1 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                     Download
                   </a>
                 </div>
+                }
               </div>
             </div>
           </main>

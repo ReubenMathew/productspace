@@ -35,6 +35,10 @@ export default (req, res) => {
                         _id
                         ProjectName
                         Description
+                        Tagline
+                        Download
+                        Source
+                        Docs
                         }
                     }
                     }

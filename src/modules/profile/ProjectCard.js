@@ -1,7 +1,21 @@
 import Link from 'next/link'
 
+export async function getServerSideProps({ params }) {
+
+    const user = params.user
+    
+    // console.log(ProjectData)
+  
+    return {
+      props: {
+        user
+      }
+    }
+  
+  }
+
 function ProjectCard(props){
-    const repo = props.source.slice(19);
+    const repo = props.source ? props.source.slice(19) : "";
     return (
         <div class="max-w-lg w-full h-auto shadow-lg rounded-lg border border-accent1 m-4">
             <div class="flex justify-between items-center py-6 px-6">
@@ -9,11 +23,11 @@ function ProjectCard(props){
                     <a href="/display">{props.projectName}</a>
                 </div>
                 <div class="hidden sm:block">
-                    <a href="/display">
+                    <Link href="/[user]/[project]" as={props.link}>
                         <span class="text-accent5 text-sm border border-accent2 py-1 px-4 rounded-lg hover:border-accent5 hover:text-accent7 focus:outline-none transition duration-200 ease-in-out">
                             Visit
                         </span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div class="bg-accent1 border-t border-accent2 py-3 px-6"> 
