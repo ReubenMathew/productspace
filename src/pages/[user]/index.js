@@ -1,4 +1,5 @@
 import ProjectCard from '../../modules/profile/ProjectCard'
+import Head from 'next/head'
 
 const host = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : `https://${process.env.VERCEL_URL}`
 
@@ -42,8 +43,18 @@ function Cards(props){
 function Profile(props) {
     
     return (
-        <div class="bg-white min-h-screen px-8 py-8  ">
-            <Cards data={props.ProjectData} user={props.user}/>
+        <div>
+            <Head>
+                <title>{props.user}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
+                <meta property="og:site_name" content="productspace" />
+                <meta property="og:title" content={`${props.user} - Profile}`} />
+                <meta property="og:url" content={`www.productspace.now.sh/${props.user}/`} />
+                <meta property="og:description" content={`Profile page for: ${props.user}`} />
+            </Head>
+            <div class="bg-white min-h-screen px-8 py-8  ">
+                <Cards data={props.ProjectData} user={props.user}/>
+            </div>
         </div>
     );
 }
