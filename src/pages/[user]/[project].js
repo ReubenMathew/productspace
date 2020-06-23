@@ -48,12 +48,22 @@ function ProjectPage(props){
     <div>
       <Head>
         <title>{data.ProjectName} - {props.username}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
+        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+        <meta name="title" content={`${props.username} - ${data.ProjectName}`}/>
+        <meta name="description" content={data.Description}/>
+
+        {/* Open Graph */}
         <meta property="og:site_name" content="productspace" />
         <meta property="og:title" content={`${props.username} - ${data.ProjectName}`} />
-        <meta property="og:url" content={`www.productspace.now.sh/${props.username}/${data.ProjectName}`} />
+        <meta property="og:url" content={`https://www.productspace.now.sh/${props.username}/${data.ProjectName}`} />
         <meta property="og:description" content={data.Description} />
-        <meta property="og:image" content="../../assets/OG_IMAGE.png" />
+        {/* <meta property="og:image" content="../../assets/OG_IMAGE.png" /> */}
+
+        {/* Twitter */}
+        <meta property="twitter:url" content="https://www.productspace.now.sh/"/>
+        <meta property="twitter:title" content={`${props.username} - ${data.ProjectName}`} />
+        <meta property="twitter:description" content={data.Description}/>
+        {/* <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"></meta> */}
 
       </Head>
       <div class="min-h-screen">
