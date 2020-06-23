@@ -1,25 +1,26 @@
 import Template from '../../modules/Template'
 import Head from 'next/head'
 
-export async function getStaticPaths() {
+const host = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : `https://${process.env.VERCEL_URL}`
+// console.log(host)
+// export async function getStaticPaths() {
+
   
-  const res = await fetch(`http://localhost:3000/api/AllUsers`)
-  const users = await res.json()
-  // console.log(users)
-  const paths = users.map( user => user.projects.data.map(project => `/${user.userid}/${project.ProjectName}`)).flat()
-  
-  // console.log(paths)
+//   const res = await fetch(`${host}/api/AllUsers`)
+//   const users = await res.json()
+//   // console.log(users)
+//   const paths = users.map( user => user.projects.data.map(project => `/${user.userid}/${project.ProjectName}`)).flat()
 
-  return {
-    paths,
-    fallback: false
-  }
-}
+//   return {
+//     paths,
+//     fallback: false
+//   }
+// }
 
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
 
-  const getURI = `http://localhost:3000//api/GetProject?user="${params.user}"&project=${params.project}`
+  const getURI = `${host}/api/GetProject?user="${params.user}"&project=${params.project}`
   // console.log(getURI)
   const res = await fetch(getURI)
   const ProjectData = await res.json()
