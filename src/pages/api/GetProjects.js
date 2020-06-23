@@ -24,7 +24,7 @@ export default (req, res) => {
     .query({
         query: gql`
             # Write your query or mutation here
-            query ProjectByUserID {
+            query ProjectsByUserID {
                 accountByUserID(userid: ${user}){
                     data{
                     _id
@@ -35,10 +35,6 @@ export default (req, res) => {
                         _id
                         ProjectName
                         Description
-                        Tagline
-                        Download
-                        Source
-                        Docs
                         }
                     }
                     }
@@ -53,15 +49,9 @@ export default (req, res) => {
 
     var projects = result.data.accountByUserID.data[0].projects.data
 
-    var out = projects.filter(function(project) {
-        // console.log(project.ProjectName)
-        // console.log(`${req.query.project}`)
-        return project.ProjectName == `${req.query.project}` ;
-    });
-
     // console.log(out)
 
-      res.end(JSON.stringify(out))
+    res.end(JSON.stringify(projects))
       
     })
     .catch(error => console.log(error));

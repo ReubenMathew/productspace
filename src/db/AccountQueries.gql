@@ -8,6 +8,16 @@ query AccountByEmail {
   }
 }
 
+query AllUsers {
+    query AllUsers {
+        Accounts {
+            data {
+                userid
+            }
+        }
+    }
+}
+
 query AccountsProjects {
   Accounts {
     data {

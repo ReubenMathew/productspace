@@ -1,52 +1,61 @@
 import Template from '../../modules/Template'
 import Head from 'next/head'
-import {useRouter} from 'next/router'
 
-async function getProjectDataAsync() 
-{
-  let response = await fetch(`/api/GetProject?user="ReubenMathew"&project=VennFX`);
-  let data = await response.json()
-  return data;
-}
+const host = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : `https://${process.env.VERCEL_URL}`
+// console.log(host)
+// export async function getStaticPaths() {
 
-function ProjectPage(){
-  const router = useRouter()
-  const head = String(router.query.project).trim()
-  // ProjectData()
-  // console.log(ProjectData())
-  const data = {
-    tagline: 'Brainstorm. Organize. Create.',
-    description: 'VennFX is a cross-platform Venn Diagram desktop application built for performance and customization.',
-    download: 'https://github.com/EECS2311-Team8/SoftwareDevelopmentProject/releases/tag/vF',
-    source: 'https://github.com/ReubenMathew/VennFX',
-    docs: "https://github.com/ReubenMathew/VennFX/tree/master/Documentation",
-    author: 'Reuben Ninan'
+  
+//   const res = await fetch(`${host}/api/AllUsers`)
+//   const users = await res.json()
+//   // console.log(users)
+//   const paths = users.map( user => user.projects.data.map(project => `/${user.userid}/${project.ProjectName}`)).flat()
+
+//   return {
+//     paths,
+//     fallback: false
+//   }
+// }
+
+
+export async function getServerSideProps({ params }) {
+
+  const getURI = `${host}/api/GetProject?user="${params.user}"&project=${params.project}`
+  // console.log(getURI)
+  const res = await fetch(getURI)
+  const ProjectData = await res.json()
+  const username = params.user
+  // console.log("------------")
+  // console.log(ProjectData)
+
+  return {
+    props: {
+      ProjectData,
+      username
+    }
   }
 
-  getProjectDataAsync()
-  .then(raw => {
-    const res = raw[0]
-    console.log(res.ProjectName)
-    data.projectName = res.ProjectName
-  }); 
+}
 
-  console.log(data)
+function ProjectPage(props){
 
-  // console.log(router.query)
+  const data = props.ProjectData[0]
+  
+  // console.log("------------")
+  // console.log(data)
+
   return (
     <div>
       <Head>
-        <title>{data.projectName} - {data.author}</title>
+        <title>{data.ProjectName} - {props.username}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
         <meta property="og:site_name" content="productspace" />
-        <meta property="og:title" content={`${data.projectName}`} />
+        <meta property="og:title" content={`${data.ProjectName}`} />
       </Head>
       <Template theme="vercel" data={data}/>
     </div>
   );
 
 }
-
-
 
 export default ProjectPage;
