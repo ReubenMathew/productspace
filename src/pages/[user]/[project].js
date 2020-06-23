@@ -50,7 +50,11 @@ function ProjectPage(props){
         <title>{data.ProjectName} - {props.username}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
         <meta property="og:site_name" content="productspace" />
-        <meta property="og:title" content={`${data.ProjectName}`} />
+        <meta property="og:title" content={`${props.username} - ${data.ProjectName}`} />
+        <meta property="og:url" content={`${host}/${props.username}/${data.ProjectName}`} />
+        <meta property="og:description" content={data.Description} />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+
       </Head>
       <Template theme="vercel" data={data}/>
     </div>
