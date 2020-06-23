@@ -1,4 +1,4 @@
-import ProjectCard from '../modules/profile/ProjectCard'
+import ProjectCard from '../../modules/profile/ProjectCard'
 
 const data = [
     {
