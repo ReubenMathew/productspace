@@ -21,14 +21,19 @@ mutation UpdateProfile {
 
 mutation AddProject {
     createProject(data: {
-    ProjectName: ${ProjectName}
-    Description: ${Description}
-    profile:{ connect: ${Profile}}
+    ProjectName: ""
+    Tagline: ""
+    Description: ""
+    Download: ""
+    Source:""
+    Docs: ""
+    Account: {connect: ""}
 }){
     _id
     ProjectName
 }
 }
+
 
 
 
