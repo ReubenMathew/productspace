@@ -16,7 +16,7 @@ function VercelTheme(props){
             <nav class="relative flex items-center justify-around sm:h-10 lg:justify-start">
               <div class="block flex justify-between items-center w-full">
                 <span class="font-medium text-2xl text-accent4">
-                  VennFX
+                  {props.ProjectName}
                 </span>
                 <a href={props.Docs}>
                   <Button py="1" px="2" type="secondary" text="Documentation"/>
