@@ -78,7 +78,7 @@ function ProjectPage(props){
 
 function Markdown(){
   return (
-    <div class="bg-white py-20 lg:py-32 text-center">
+    <div class="bg-white py-20 lg:py-32 min-h-screen text-center">
       Markdown goes here...
     </div>
   )

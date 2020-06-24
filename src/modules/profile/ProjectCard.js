@@ -20,10 +20,10 @@ function ProjectCard(props){
         <div class="max-w-lg w-full h-auto shadow-lg rounded-lg border border-accent1 m-4">
             <div class="flex justify-between items-center py-6 px-6">
                 <div class="font-bold text-2xl">
-                    <a href="/display">{props.projectName}</a>
+                    <Link class="cursor-pointer" href="/[user]/[project]" as={props.link}>{props.projectName}</Link>
                 </div>
-                <div class="hidden sm:block">
-                    <Link href="/[user]/[project]" as={props.link}>
+                <div class="cursor-pointer hidden sm:block">
+                    <Link class="" href="/[user]/[project]" as={props.link}>
                         <span class="text-accent5 text-sm border border-accent2 py-1 px-4 rounded-lg hover:border-accent5 hover:text-accent7 focus:outline-none transition duration-200 ease-in-out">
                             Visit
                         </span>

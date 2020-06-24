@@ -48,9 +48,9 @@ function Profile(props) {
                 <title>{props.user}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
                 <meta property="og:site_name" content="productspace" />
-                <meta property="og:title" content={`${props.user} - Profile`} />
+                <meta property="og:title" content={`${props.user}`} />
                 <meta property="og:url" content={`www.productspace.now.sh/${props.user}/`} />
-                <meta property="og:description" content={`Profile page for: ${props.user}`} />
+                <meta property="og:description" content={`${props.user}'s profile page`} />
             </Head>
             <div class="bg-white min-h-screen px-8 py-8">
                 <Cards data={props.ProjectData} user={props.user}/>
