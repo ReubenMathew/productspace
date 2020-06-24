@@ -1,19 +1,5 @@
 import Link from 'next/link'
 
-export async function getServerSideProps({ params }) {
-
-    const user = params.user
-    
-    // console.log(ProjectData)
-  
-    return {
-      props: {
-        user
-      }
-    }
-  
-  }
-
 function ProjectCard(props){
     const repo = props.source ? props.source.slice(19) : "";
     return (

@@ -2,16 +2,17 @@ import Button from './components/Button'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 
+const host = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : `https://${process.env.VERCEL_URL}`
 
 function VercelTheme(props, params){
   const router = useRouter()
   const user = router.query.user 
-  console.log(user)
+  // console.log(user)
   // console.log("Vercel Theme",props,params)
   return (
     <div>
 
-    <div class="relative bg-accent1 overflow-hidden">
+    <div class="relative bg-accent1 pt-1 sm:pt-0 overflow-hidden">
       <div class="max-w-screen-xl mx-auto ">
         <div class="relative z-10 pb-8 bg-accent1 border-b-1 border-accent2 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full ">
           <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-accent1 transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -21,12 +22,17 @@ function VercelTheme(props, params){
           <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
             <nav class="relative flex items-center justify-around sm:h-10 lg:justify-start">
               <div class="flex justify-between items-center w-full">
-                <span class="font-medium text-2xl text-accent4">
-                  {props.ProjectName}
-                </span>
-                <a href={props.Docs}>
-                  <Button py="1" px="2" type="secondary" text="Documentation"/>
-                </a>
+                <div class="flex items-center">
+                  <span class="font-medium text-2xl text-accent4 pr-4 sm:pr-6">
+                    {props.ProjectName}
+                  </span>
+                  <a class="hidden sm:block" href={props.Docs}>
+                    <Button py="1" px="2" type="secondary" text="Documentation"/>
+                  </a>
+                </div>
+                <div class="py-2">
+                  <span class="text-base truncate text-accent5 rounded-full bg-accent2 px-3 py-1 hover:shadow-lg shadow transition duration-100 ease-in"><Link as={`/${user}`} href="/[user]">{user}</Link></span>
+                </div>
               </div>
             </nav>
           </div>
@@ -51,9 +57,7 @@ function VercelTheme(props, params){
               <p class="mt-3 text-base text-black sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 {props.Description}
               </p>
-              <div class="mt-4 text-sm text-accent6 sm:mt-4 sm:text-base sm:max-w-xl sm:mx-auto md:mt-5 md:text-base lg:mx-0">
-                Created by: <span class=" text-sm  text-accent5 rounded-full bg-accent2 px-2 py-1"><Link as={`/${user}`} href="/[user]">{user}</Link></span>
-              </div>
+
               <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div class="rounded-md">
                   <a href={props.Source} class="w-full flex items-center justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-white bg-success shadow-lg transform hover:-translate-y-1 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
@@ -67,6 +71,11 @@ function VercelTheme(props, params){
                   </a>
                 </div>
                 }
+                <div class="mt-3 sm:mt-0 sm:ml-3">
+                  <a href={props.Docs} class="w-full sm:hidden border border-accent2 shadow flex items-center justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-accent4 bg-transparent transform hover:-translate-y-1 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                    Documentation
+                  </a>
+                </div>
               </div>
             </div>
           </main>
@@ -80,5 +89,6 @@ function VercelTheme(props, params){
     </div>
   );
 }
+
 
 export default VercelTheme;
