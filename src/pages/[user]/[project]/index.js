@@ -1,4 +1,4 @@
-import Template from '../../modules/Template'
+import Template from '../../../modules/Template'
 import Head from 'next/head'
 
 const host = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : `https://${process.env.VERCEL_URL}`

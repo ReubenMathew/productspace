@@ -1,7 +1,13 @@
 import Button from './components/Button'
+import Link from 'next/link'
+import {useRouter} from 'next/router'
 
-function VercelTheme(props){
-  console.log("Vercel Theme",props)
+
+function VercelTheme(props, params){
+  const router = useRouter()
+  const user = router.query.user 
+  console.log(user)
+  // console.log("Vercel Theme",props,params)
   return (
     <div>
 
@@ -45,6 +51,9 @@ function VercelTheme(props){
               <p class="mt-3 text-base text-black sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 {props.Description}
               </p>
+              <div class="mt-4 text-sm text-accent6 sm:mt-4 sm:text-base sm:max-w-xl sm:mx-auto md:mt-5 md:text-base lg:mx-0">
+                Created by: <span class=" text-sm  text-accent5 rounded-full bg-accent2 px-2 py-1"><Link as={`/${user}`} href="/[user]">{user}</Link></span>
+              </div>
               <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div class="rounded-md">
                   <a href={props.Source} class="w-full flex items-center justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-white bg-success shadow-lg transform hover:-translate-y-1 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
