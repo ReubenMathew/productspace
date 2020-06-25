@@ -1,0 +1,42 @@
+/* @tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+h1 {
+    @apply py-2 text-5xl font-semibold text-center text-accent6;
+}
+
+h2 {
+    @apply py-1 text-2xl text-accent5;
+}
+
+h3 {
+    @apply py-1 text-xl text-accent7;
+}
+
+h4 {
+    @apply py-1 text-lg text-accent8;
+}
+
+ol {
+    @apply flex flex-col text-base text-accent8;
+}
+
+li {
+    @apply px-4 mt-1 border-l-1 border-accent7 ;
+}
+
+p {
+    @apply flex flex-wrap py-2 pr-4 text-base;
+} 
+
+code {
+    @apply px-2 py-1 mx-1 rounded bg-accent2 text-accent8;
+}
+
+a {
+    @apply pr-1 font-medium text-successlight; 
+} */

@@ -1,22 +1,8 @@
 import Template from '../../../modules/Template'
 import Head from 'next/head'
+import styles from '../../../assets/Markdown.module.css'
 
 const host = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : `https://${process.env.VERCEL_URL}`
-// console.log(host)
-// export async function getStaticPaths() {
-
-  
-//   const res = await fetch(`${host}/api/AllUsers`)
-//   const users = await res.json()
-//   // console.log(users)
-//   const paths = users.map( user => user.projects.data.map(project => `/${user.userid}/${project.ProjectName}`)).flat()
-
-//   return {
-//     paths,
-//     fallback: false
-//   }
-// }
-
 
 export async function getServerSideProps({ params }) {
 
@@ -25,20 +11,27 @@ export async function getServerSideProps({ params }) {
   const res = await fetch(getURI)
   const ProjectData = await res.json()
   const username = params.user
-  // console.log("------------")
-  // console.log(ProjectData)
+
+  const repoID = await ProjectData[0].Source ? ProjectData[0].Source.slice(19) : "";
+
+
+  const markdown_res = await fetch(`https://raw.githubusercontent.com/${repoID}/master/PRODUCTSPACE.md`)
+  var markdown = await markdown_res.text()
+  markdown = markdown == "404: Not Found" ? "" : markdown;
+  console.log(markdown)
 
   return {
     props: {
       ProjectData,
-      username
+      username,
+      markdown
     }
   }
 
 }
 
 function ProjectPage(props){
-
+  // console.log(props)
   const data = props.ProjectData[0]
   
   // console.log("------------")
@@ -68,7 +61,7 @@ function ProjectPage(props){
       </Head>
       <div class="min-h-screen">
         <Template theme="vercel" data={data}/>
-        <Markdown/>
+        <Markdown class="min-h-full" text={props.markdown}/>
         <Footer/>
       </div>
     </div>
@@ -76,24 +69,54 @@ function ProjectPage(props){
 
 }
 
-function Markdown(){
+
+function Markdown(text){
+
+  const ReactMarkdown = require('react-markdown/with-html')
+  const htmlParser = require('react-markdown/plugins/html-parser')
+
+  const markdown = text.text
+
+  function RenderMarkdown(){
+
+    return (
+      <div className={styles}>
+        <ReactMarkdown 
+          source={markdown}
+          escapeHtml={false}
+        />
+      </div>
+
+    )
+  }
+
   return (
-    <div class="bg-white py-20 lg:py-32 min-h-screen text-center">
-      Markdown goes here...
+    <div class="bg-white sm:py-8 py-4 lg:py-12 min-h-screen px-4 sm:px-12 md:px-24" optionClassName="markdown">
+      <RenderMarkdown/>
+      {/* <style global jsx>
+      {`
+        a :global(.nested-element) {
+          color: #3291FF;
+        }
+      `}
+      </style> */}
     </div>
+
   )
+
 }
 
 function Footer(){
+  
 
   return (
     <div class="bg-accent1 border-t-1 border-accent2">
       <div class="h-auto flex font-semibold text-sm text-accent6 md:px-12 p-3">
         <div class="w-1/2 text-left">
-            <p>Made with ❤️</p>
+            <span>Made with ❤️</span>
         </div>
         <div class=" w-1/2 text-right">
-            <p>2020. <b>Lv19</b></p>
+            <span>2020. <b>Lv19</b></span>
         </div>
       </div>
     </div>
