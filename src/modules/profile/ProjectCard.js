@@ -3,15 +3,16 @@ import Link from 'next/link'
 function ProjectCard(props){
     const repo = props.source ? props.source.slice(19) : "";
     return (
-        <div class="max-w-lg w-full h-auto shadow-lg rounded-lg border border-accent1 m-4">
+        <div class="max-w-md w-full h-auto shadow-lg rounded-lg border border-accent1">
             <div class="flex justify-between items-center py-6 px-6">
                 <div class="font-bold text-2xl">
                     <Link class="cursor-pointer" href="/[user]/[project]" as={props.link}>{props.projectName}</Link>
                 </div>
-                <div class="cursor-pointer hidden sm:block">
+                <div class="cursor-pointer ">
                     <Link class="" href="/[user]/[project]" as={props.link}>
-                        <span class="text-accent5 text-sm border border-accent2 py-1 px-4 rounded-lg hover:border-accent5 hover:text-accent7 focus:outline-none transition duration-200 ease-in-out">
-                            Visit
+                        <span class="text-accent5 text-sm border flex items-center border-accent2 py-1 px-4 rounded-lg hover:border-accent5 hover:text-accent7 focus:outline-none transition duration-200 ease-in-out">
+                            <span class="hidden sm:block">Visit</span>
+                            <svg class="sm:hidden text-current h-4 w-auto" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
                         </span>
                     </Link>
                 </div>

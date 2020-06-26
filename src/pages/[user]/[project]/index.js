@@ -1,6 +1,7 @@
 import Template from '../../../modules/Template'
 import Head from 'next/head'
 import styles from '../../../assets/Markdown.module.css'
+import Footer from '../../../components/Footer'
 
 const host = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : `https://${process.env.VERCEL_URL}`
 
@@ -106,22 +107,6 @@ function Markdown(text){
 
 }
 
-function Footer(){
-  
 
-  return (
-    <div class="bg-accent1 border-t-1 border-accent2">
-      <div class="h-auto flex font-semibold text-sm text-accent6 md:px-12 p-3">
-        <div class="w-1/2 text-left">
-            <span>Made with ❤️</span>
-        </div>
-        <div class=" w-1/2 text-right">
-            <span>2020. <b>Lv19</b></span>
-        </div>
-      </div>
-    </div>
-  )
-
-}
 
 export default ProjectPage;
