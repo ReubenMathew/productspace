@@ -66,7 +66,7 @@ function Cards(props){
     // console.log(userLink)
 
     return(
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col sm:px-8">
             {projects.map(project => (
                 <div class="p-4">
                     <ProjectCard
