@@ -35,7 +35,7 @@ li {
 }
 
 p {
-  @apply flex flex-wrap py-2 pr-4 text-base whitespace-pre;
+  @apply flex flex-wrap py-2 pr-4 text-base whitespace-pre-wrap;
 } 
 
 code {
