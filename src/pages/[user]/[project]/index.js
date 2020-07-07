@@ -74,7 +74,7 @@ function ProjectPage(props){
 function Markdown(text){
 
   const ReactMarkdown = require('react-markdown/with-html')
-  const htmlParser = require('react-markdown/plugins/html-parser')
+  // const htmlParser = require('react-markdown/plugins/html-parser')
 
   const markdown = text.text
 
@@ -86,7 +86,6 @@ function Markdown(text){
           source={markdown}
           escapeHtml={false}
         />
-        <a className="" href="http://productspace.now.sh/ReubenMathew/VennFX">http://productspace.now.sh/ReubenMathew/VennFX</a>
       </div>
 
     )
@@ -94,7 +93,7 @@ function Markdown(text){
 
   return (
     <div class="bg-white sm:py-8 py-4 lg:py-12 min-h-screen px-4 sm:px-12 md:px-24" optionClassName="markdown">
-      {/* <RenderMarkdown/> */}
+      <RenderMarkdown/>
       {/* <style global jsx>
       {`
         a :global(.nested-element) {

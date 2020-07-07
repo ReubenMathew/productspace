@@ -31,8 +31,7 @@ module.exports = {
         purple: '#F81CE5',
         violet: '#7928CA',
         cyan: '#79FFE1',
-        'primary': '#000',
-        'secondary': 'FFF'
+        coral: '#FF3E4D',
       },
       padding: {
         '1/3': '0.1rem',
