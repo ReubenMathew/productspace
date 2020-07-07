@@ -50,12 +50,16 @@ export default (req, res) => {
     })
     .then(result => {
     //   console.log(result)
+        if(result.data.accountByUserID.data[0].projects.data){
+            var projects = result.data.accountByUserID.data[0].projects.data
 
-    var projects = result.data.accountByUserID.data[0].projects.data
+            res.end(JSON.stringify(projects))
+        }
+        res.end(JSON.stringify({}))
 
     // console.log(out)
 
-    res.end(JSON.stringify(projects))
+    
       
     })
     .catch(error => console.log(error));
