@@ -9,7 +9,7 @@
 * {
   font-family: 'Inter', serif;
 }
-
+/* 
 h1 {
   @apply py-2 text-5xl font-semibold text-center text-accent6;
 }
@@ -41,4 +41,4 @@ p {
 code {
   @apply px-2 py-1 mx-1 rounded bg-accent2 text-accent8;
 }
-
+ */
