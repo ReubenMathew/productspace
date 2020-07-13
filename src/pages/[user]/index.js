@@ -31,7 +31,7 @@ function Profile(props) {
     return (
         <div class="">
             <Head>
-                <title>{props.user}</title>
+                <title>{props.user} | Profile</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>\
                 <meta property="og:site_name" content="productspace" />
                 <meta property="og:title" content={`${props.user}`} />
