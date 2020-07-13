@@ -39,7 +39,7 @@ function ProjectPage(props){
   // console.log(data)
 
   return (
-    <div>
+    <div class="flex flex-col">
       <Head>
         <title>{props.username} | {data.ProjectName}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
@@ -59,15 +59,15 @@ function ProjectPage(props){
         <meta property="twitter:description" content={data.Description}/>
         {/* <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"></meta> */}
       </Head>
-      <div class="h-full">
+      <div class="min-h-screen">
         <Template theme="vercel" data={data}/>
         <div class="xl:px-12">
-          <Markdown class="min-h-full pt-2" text={props.markdown}/>
+          <Markdown text={props.markdown}/>
         </div>
       </div>
-      <footer class="">
-        <Footer/>
-      </footer>
+
+      <Footer></Footer>
+
     </div>
   );
 
@@ -86,6 +86,7 @@ function Markdown(text){
       <div className="w-full whitespace-pre-wrap prose md:prose-lg lg:prose-xl">
         <ReactMarkdown 
           source={markdown}
+          unwrapDisallowed="true"
         />
       </div>
 
