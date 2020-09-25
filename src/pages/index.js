@@ -7,7 +7,7 @@ function Home(){
           coming soon
         </div>
         <div class="text-xl">
-          checkout a <a href="/Chidalu" class="text-coral transition duration-300 hover:bg-coral hover:text-white">demo</a>
+          checkout a <a href="/ReubenMathew" class="text-coral transition duration-300 hover:bg-coral hover:text-white">demo</a>
         </div>
       </div>
     </div>
